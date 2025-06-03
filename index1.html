@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Браузерная рыбалка</title>
+  <link rel="stylesheet" href="style1.css" />
+</head>
+<body>
+  <div id="game">
+    <h1>Рыбалка</h1>
+
+    <div id="locationContainer">
+      <label for="locationSelect">Локация:</label>
+      <select id="locationSelect">
+        <option value="river">Река</option>
+        <option value="lake">Озеро</option>
+      </select>
+    </div>
+
+    <div id="waterContainer">
+      <img id="locationImage" src="./images/river.jpg" alt="Локация" />
+      <div id="waterOverlay"></div>
+      <div id="floatBob"></div>
+    </div>
+
+    <div id="timeDisplay">00:00</div>
+
+    <button id="castButton">Ловить</button>
+    <div id="result"></div>
+
+    <h2>Пойманная рыба</h2>
+    <ul id="catchList"></ul>
+
+    <h2>Монеты: <span id="coins">0</span></h2>
+
+    <button id="openShop">Магазин</button>
+
+    <div id="shop" class="hidden">
+      <h2>Магазин</h2>
+      <button id="closeShop">Закрыть</button>
+      <div class="shop-item">
+        <h3>Удочка (+10% шанс клёва)</h3>
+        <button data-item="rod" data-price="100">Купить за 100</button>
+      </div>
+      <div class="shop-item">
+        <h3>Наживка (+15% шанс клёва)</h3>
+        <button data-item="bait" data-price="150">Купить за 150</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

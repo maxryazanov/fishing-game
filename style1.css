@@ -1,0 +1,154 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background: linear-gradient(to bottom, #87ceeb 0%, #4682b4 100%);
+  color: #333;
+  user-select: none;
+}
+
+#game {
+  max-width: 480px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#locationContainer {
+  margin-bottom: 10px;
+}
+
+#waterContainer {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  height: 270px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  background: #4a90e2;
+}
+
+#locationImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.85);
+  transition: filter 0.5s;
+}
+
+#waterOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 200%;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 40% 40% 0 0;
+  animation: wave 4s linear infinite;
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 2;
+}
+
+@keyframes wave {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+#floatBob {
+  position: absolute;
+  width: 40px;
+  height: 80px;
+  left: 50%;
+  bottom: 30px;
+  margin-left: -20px;
+  background: url('./images/fishing-float.png') no-repeat center/contain;
+  animation: bob 3s ease-in-out infinite;
+  z-index: 3;
+}
+
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+#timeDisplay {
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+#castButton {
+  padding: 10px 20px;
+  font-size: 18px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  background: #2a74d9;
+  color: white;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: background 0.3s;
+}
+
+#castButton:active {
+  background: #1a4ca0;
+}
+
+#result {
+  min-height: 24px;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+#catchList {
+  list-style: none;
+  padding: 0;
+  max-height: 140px;
+  overflow-y: auto;
+  margin-bottom: 15px;
+}
+
+#catchList li {
+  padding: 3px 5px;
+  border-bottom: 1px solid #ddd;
+}
+
+#coins {
+  font-weight: bold;
+  color: #e8a317;
+}
+
+#openShop, #closeShop {
+  padding: 8px 15px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  background: #2a74d9;
+  color: white;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: background 0.3s;
+}
+
+#closeShop {
+  background: #d92a2a;
+}
+
+#openShop:hover, #closeShop:hover, button[data-item]:hover {
+  opacity: 0.85;
+}
+
+.hidden {
+  display: none;
+}
+
+.shop-item {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #f3f3f3;
+}

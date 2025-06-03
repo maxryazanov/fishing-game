@@ -1,0 +1,45 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login / Registration Form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="login.css">
+    <script src="login.js" defer></script>
+    <!-- styles and scripts -->
+
+
+</head>
+<body>
+    <img class="logo" src="./images/logo_without_bg.png" alt="">
+    <div class="container">
+        <div class="tabs">
+            <div class="tab active" id="loginTab">Вход</div>
+            <div class="tab" id="registerTab">Регистрация</div>
+        </div>
+        <form id="loginForm" class="active" autocomplete="on">
+            <label for="loginEmail">Email</label>
+            <input type="email" id="loginEmail" name="email" required>
+            <label for="loginPassword">Пароль</label>
+            <input type="password" id="loginPassword" name="password" required minlength="8">
+            <button type="submit">Войти</button>
+        </form>
+        <form id="registerForm" autocomplete="on">
+            <label for="registerName">Nicname</label>
+            <input type="text" id="registerName" name="name" required>
+            <label for="registerEmail">Email</label>
+            <input type="email" id="registerEmail" name="email" required>
+            <label for="registerPassword">Пароль</label>
+            <input type="password" id="registerPassword" name="password" required minlength="8">
+            <label for="registerConfirmPassword">Подтвердить Пароль</label>
+            <input type="password" id="registerConfirmPassword" name="confirmPassword" required minlength="8">
+            <button type="submit">Register</button>
+        </form>
+    </div>
+    <footer>
+        <p class="copy">&copy; 2025 На Крючке</p>
+    </footer>
+</body>
+</html>
