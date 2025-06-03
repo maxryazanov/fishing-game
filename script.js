@@ -35,6 +35,9 @@ const timeOverlay = document.getElementById("timeOverlay");
 const timeDisplay = document.getElementById("timeDisplay");
 const openShop = document.getElementById("openShop");
 const all = JSON.parse(localStorage.getItem("catchList") || "[]");
+const openShopButton = document.getElementById("openShopButton");
+const closeProfile = document.getElementById("closeProfileButton");
+const profileBtn = document.getElementById("profileBtn");
 
 sellCountElement = document.getElementById("sellCount");
 sellCountWeight = all.reduce((sum, fish) => sum + fish.weight, 0);
@@ -61,8 +64,10 @@ function sell() {
 }
 
 moneyElement = document.getElementById("coins");
+moneyElement2 = document.getElementById("coinsProfile");
 let money = parseInt(localStorage.getItem("money")) || 0;
 moneyElement.textContent = money.toString();
+moneyElement2.textContent = money.toString();
 
 
 openShop.addEventListener("click", () => {
@@ -73,6 +78,23 @@ closeShop.addEventListener("click", () => {
   const shopWindow = document.getElementById("shop");
   shopWindow.classList.add("hidden");
 });
+openShopButton.addEventListener("click", () => {
+  const shopWindow = document.getElementById("shop");
+  const profileWindow = document.getElementById("profile");
+  profileWindow.classList.add("hidden");
+  shopWindow.classList.toggle("hidden");
+});
+closeProfile.addEventListener("click", () => {
+  const profileWindow = document.getElementById("profile");
+  profileWindow.classList.add("hidden");
+});
+profileBtn.addEventListener("click", () => {
+  const profileWindow = document.getElementById("profile");
+  const shopWindow = document.getElementById("shop");
+  shopWindow.classList.add("hidden");
+  profileWindow.classList.toggle("hidden");
+}
+);
 
 function getGameTime() {
   const elapsedSeconds = (Date.now() - startTime) / 1000;

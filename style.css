@@ -13,6 +13,9 @@ body {
   color: #333;
   text-align: center;
 }
+.mb-10 {
+  margin-bottom: 10px;
+}
 .hidden {
   display: none;
 }
@@ -175,11 +178,11 @@ button {
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   transition: background 0.3s;
 }
-.sell{
+.sell, #logoutButton{
   background: #d9534f!important;
   margin-bottom: 0;
 }
-.sell:hover{
+.sell, #logoutButton:hover{
   background: #c9302c!important;
 }
 button:hover {
