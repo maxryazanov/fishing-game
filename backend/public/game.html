@@ -195,7 +195,7 @@
     <p>Успешно!</p>
   </div>
 
-  <div class="notification" id="notification">
+  <div class="notification hidden" id="notification">
     <p id="notificationMessage">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum consequatur dolore corporis reiciendis, minus reprehenderit a magni nobis fugit facilis.</p>
     <button class="hidden" id="closeNotification">✖</button>
   </div>
@@ -215,6 +215,8 @@
   </div>
 </section>
 
+<audio id="chatSound" src="sounds/chat.mp3" preload="auto"></audio>
+<audio id="notificationSound" src="sounds/notification.mp3" preload="auto"></audio>
 
   <script>
     async function loadUserBalance() {

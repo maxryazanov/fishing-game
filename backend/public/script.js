@@ -212,6 +212,17 @@ locationSelect.addEventListener("change", (e) => {
   updateLighting();
 });
 
+function notification(){
+  const notification = document.createElement("notification");
+  notification.className = "notification";
+  notification.classList.remove("hidden");
+  notification.textContent = "Добро пожаловать в игру!";
+  document.body.appendChild(notification);
+  setTimeout(() => {
+    notification.remove();
+  }, 3000);
+}
+
 loadCatchList();
 setInterval(updateLighting, 10000);
 updateLighting();

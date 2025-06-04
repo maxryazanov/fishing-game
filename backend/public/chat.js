@@ -1,7 +1,4 @@
 const socket = io();
-let guestName = '';
-
-
 
 // DOM элементы
 const chatForm = document.getElementById('chatForm');
@@ -10,30 +7,42 @@ const chatMessages = document.getElementById('chatMessages');
 const closeChatButton = document.getElementById('closeChatButton');
 const chatContainer = document.getElementById('chatContainer');
 
-/// Получаем имя от сервера
-socket.on('assignGuestName', (name) => {
-  guestName = name;
-});
+// Получение никнейма из localStorage
+const nickname = localStorage.getItem('nickname') || 'Гость';
 
 // Отправка сообщения
-document.getElementById('chatForm').addEventListener('submit', (e) => {
+chatForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  const input = document.getElementById('chatInput');
-  const message = input.value.trim();
-  if (message !== '') {
-    socket.emit('chatMessage', {
-      user: guestName,
-      text: message,
-    });
-    input.value = '';
-  }
+  const message = chatInput.value.trim();
+  if (!message) return;
+
+  socket.emit('chatMessage', {
+    user: nickname,
+    message,
+    time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+  });
+
+  chatInput.value = '';
+  chatInput.focus();
 });
 
-// Получение сообщений
+// Получение сообщения
 socket.on('chatMessage', (data) => {
-  const messageElement = document.createElement('div');
-  messageElement.textContent = `${data.user}: ${data.text}`;
-  document.getElementById('chatMessages').appendChild(messageElement);
+  const msgEl = document.createElement('div');
+  msgEl.classList.add('chat-message');
+
+  const color = getColorForUser(data.user);
+
+  msgEl.innerHTML = `
+    <span class="chat-time">[${data.time}]</span>
+    <span class="chat-user" style="color:${color}">${data.user}:</span>
+    <span class="chat-text">${data.message}</span>
+  `;
+
+  chatMessages.appendChild(msgEl);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
+
+  playChatSound();
 });
 
 // Генерация уникального цвета по нику

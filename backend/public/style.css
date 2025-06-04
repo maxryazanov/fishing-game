@@ -574,7 +574,7 @@ position: absolute;
   padding: 10px;
   border-radius: 5px;
   z-index: 1001;
-  animation: fadeInOut 5s ease-in-out forwards;
+  animation: fadeInOut 3s ease-in-out forwards;
   top: 50%;
   right: 50%;
   transform: translate(50%); 
