@@ -214,10 +214,10 @@ button:hover {
 .overlay {
       position: absolute;
       top: 0; left: 0;
-      min-width: 320px;
+      min-width: 300px;
       max-width: 580px;
       width: 100%;
-      min-height: 177px;
+      min-height: 174px;
       max-height: 300px; 
       height: 100%;
       pointer-events: none;
@@ -265,7 +265,7 @@ button:hover {
   position: absolute;
   top: 0;
   left: 0;
-  width: 400px;
+  max-width: 400px;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 1000;
@@ -284,6 +284,12 @@ button:hover {
 .profile-title {
   font-size: 24px;
   margin: 0;
+}
+.balance{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .account {
   display: flex;
