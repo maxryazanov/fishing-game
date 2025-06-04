@@ -39,6 +39,43 @@
     </div>
   </section>
 
+  <section id="replenish-balance" class="hidden">
+    <div class="replenish__container">
+      <div class="replenishnav">
+        <h1>Пополнение баланса</h1>
+        <button id="closeReplenish">✖</button>
+      </div>
+      <div class="replenish__info">
+        <p>Выберите способ пополнения баланса:</p>
+        <ul>
+          <li>Банковская карта</li>
+          <li>Электронные кошельки</li>
+          <li>Мобильный платеж</li>
+        </ul>
+      </div>
+      <div class="replenish__form">
+        <label for="amount">Введите сумму:</label>
+        <input type="number" id="amount" placeholder="Сумма в монетах" />
+        <button id="confirmReplenish">Пополнить</button>
+      </div>
+    </div>
+  </section>
+
+<section id="support" class="hidden">
+  <div class="support__container">
+    <div class="supportnav">
+      <h1>Поддержка</h1>
+      <button id="closeSupport">✖</button>
+    </div>
+    <div class="support__info">
+      <p>Если у вас возникли проблемы или вопросы, пожалуйста, свяжитесь с нашей службой поддержки.</p>
+      <p>Email: <a href="mailto:email@mail.com"></a></p>
+      <p>Мы всегда готовы помочь!</p>
+    </div>
+  </div>
+</section>
+
+
 <div class="inventory-modal hidden" id="inventory-modal">
   <div class="inventoryNav">
     <h1>Инвентарь</h1>
@@ -48,22 +85,27 @@
     <div class="inventory-slot">
       <div class="slot-label">Удочка</div>
       <img src="images/rod.png" alt="Удочка" class="slot-image" />
+      <img src="images/unavailable.png" alt="Недоступно" class="slot-image slot-unavailable hidden" />
     </div>
     <div class="inventory-slot">
       <div class="slot-label">Наживка</div>
       <img src="images/fishing-worm.png" alt="Наживка" class="slot-image" />
+      <img src="images/unavailable.png" alt="Недоступно" class="slot-image slot-unavailable hidden" />
     </div>
     <div class="inventory-slot">
       <div class="slot-label">Леска</div>
       <img src="images/fishing-line.png" alt="Леска" class="slot-image" />
+      <img src="images/unavailable.png" alt="Недоступно" class="slot-image slot-unavailable hidden" />
     </div>
     <div class="inventory-slot">
       <div class="slot-label">Крючок</div>
       <img src="images/fishing-hook.png" alt="Крючок" class="slot-image" />
+      <img src="images/unavailable.png" alt="Недоступно" class="slot-image slot-unavailable hidden" />
     </div>
     <div class="inventory-slot">
       <div class="slot-label">Катушка</div>
       <img src="images/fishing-reel.png" alt="Катушка" class="slot-image" />
+      <img src="images/unavailable.png" alt="Недоступно" class="slot-image slot-unavailable hidden" />
     </div>
   </div>
 </div>
@@ -137,6 +179,43 @@
     <h2>Пойманные рыбы</h2>
     <ul id="catchList"></ul>
   </div>
+
+
+  <div class="loading hidden" id="loading">
+    <img src="./images/loading.png" alt="Загрузка..." class="loader">
+    <p>Загрузка...</p>
+  </div>
+
+  <div class="error hidden" id="error">
+    <p>Произошла ошибка. Пожалуйста, попробуйте позже.</p>
+    <img src="images/unavailable.png" alt="">
+  </div>
+
+  <div class="success hidden" id="success">
+    <p>Успешно!</p>
+  </div>
+
+  <div class="notification" id="notification">
+    <p id="notificationMessage">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum consequatur dolore corporis reiciendis, minus reprehenderit a magni nobis fugit facilis.</p>
+    <button class="hidden" id="closeNotification">✖</button>
+  </div>
+
+<!-- Поддержка -->
+  <section id="support" class="hidden">
+  <div class="support__container">
+    <div class="supportnav">
+      <h1>Поддержка</h1>
+      <button id="closeSupport" class="mb-0">✖</button>
+    </div>
+    <div class="support__info">
+      <p>Если у вас возникли проблемы или вопросы, пожалуйста, свяжитесь с нашей службой поддержки.</p>
+      <p>Email: <a href="mailto:email@mail.com" class="link">email@mail.com</a></p>
+      <p>Мы всегда готовы помочь!</p>
+    </div>
+  </div>
+</section>
+
+
   <script>
     async function loadUserBalance() {
     const userId = localStorage.getItem('userId');
