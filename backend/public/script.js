@@ -18,6 +18,7 @@ const locations = {
   }
 };
 
+
 let currentLocation = "river";
 let startTime = parseInt(localStorage.getItem("startTime")) || Date.now();
 let offsetHours = parseInt(localStorage.getItem("offsetHours")) || 0;
@@ -38,6 +39,10 @@ const all = JSON.parse(localStorage.getItem("catchList") || "[]");
 const openShopButton = document.getElementById("openShopButton");
 const closeProfile = document.getElementById("closeProfileButton");
 const profileBtn = document.getElementById("profileBtn");
+const chatBtn = document.getElementById("chatButton");
+const closeChat = document.getElementById("closeChatButton");
+const closeInventory = document.getElementById("closeInventoryButton");
+const openInventory = document.getElementById("inventoryButton");
 
 sellCountElement = document.getElementById("sellCount");
 sellCountWeight = all.reduce((sum, fish) => sum + fish.weight, 0);
@@ -69,6 +74,25 @@ let money = parseInt(localStorage.getItem("money")) || 0;
 moneyElement.textContent = money.toString();
 moneyElement2.textContent = money.toString();
 
+chatBtn.addEventListener("click", () => {
+  const chatWindow = document.getElementById("chatContainer");
+  chatWindow.classList.toggle("hidden");
+});
+closeChat.addEventListener("click", () => {
+  const chatWindow = document.getElementById("chatContainer");
+  chatWindow.classList.add("hidden");
+});
+
+
+openInventory.addEventListener("click", () => {
+  const inventoryWindow = document.getElementById("inventory-modal");
+  inventoryWindow.classList.toggle("hidden");
+});
+
+closeInventory.addEventListener("click", () => {
+  const inventoryWindow = document.getElementById("inventory-modal");
+  inventoryWindow.classList.add("hidden");
+});
 
 openShop.addEventListener("click", () => {
   const shopWindow = document.getElementById("shop");

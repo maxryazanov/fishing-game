@@ -16,7 +16,7 @@
       </div>
       <div class="shop__info">
         <p>Добро пожаловать в магазин! Здесь вы можете купить улучшения для своей рыбалки.</p>
-        <p>Ваши монеты: <span id="shopCoins">0</span></p>
+        <div id="balanceDisplay" class="balance-box">Баланс: —</div>
       </div>
       <div class="shop__grid">
         <div class="shop-item">
@@ -40,6 +40,35 @@
     </div>
   </section>
 
+<div class="inventory-modal hidden" id="inventory-modal">
+  <div class="inventoryNav">
+    <h1>Инвентарь</h1>
+    <button class="mb-0" id="closeInventoryButton">✖</button>
+  </div>
+  <div class="inventory-grid">
+    <div class="inventory-slot">
+      <div class="slot-label">Удочка</div>
+      <img src="images/rod.png" alt="Удочка" class="slot-image" />
+    </div>
+    <div class="inventory-slot">
+      <div class="slot-label">Наживка</div>
+      <img src="images/bait.png" alt="Наживка" class="slot-image" />
+    </div>
+    <div class="inventory-slot">
+      <div class="slot-label">Леска</div>
+      <img src="images/line.png" alt="Леска" class="slot-image" />
+    </div>
+    <div class="inventory-slot">
+      <div class="slot-label">Крючок</div>
+      <img src="images/hook.png" alt="Крючок" class="slot-image" />
+    </div>
+    <div class="inventory-slot">
+      <div class="slot-label">Катушка</div>
+      <img src="images/reel.png" alt="Катушка" class="slot-image" />
+    </div>
+  </div>
+</div>
+
   <aside class="profile hidden" id="profile">
     <div class="account_title">
       <h1 class="profile-title">Профиль</h1>
@@ -54,9 +83,25 @@
       <p class="account-info">Не забудьте посетить магазин, чтобы купить улучшения для своей рыбалки.</p> -->
       <div class="account_nav">
         <button id="openShopButton">Открыть магазин</button>
+        <button id="inventoryButton">Инвентарь</button>
+
         <button id="logoutButton">Выйти</button>
       </div>
     </div>
+  </aside>
+
+  <aside class="chat-container hidden" id="chatContainer">
+    <div class="chat-header">
+      <h2>Чат</h2>
+      <button class="mb-0" id="closeChatButton">✖</button>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <!-- Сообщения будут добавляться сюда -->
+    </div>
+    <form id="chatForm" class="chat-form">
+      <input type="text" id="chatInput" placeholder="Введите сообщение..." required>
+      <button class="mb-0" id="chatSubmitBtn" type="submit">Отправить</button>
+    </form>
   </aside>
 
     <img class="logo" src="./images/logo_without_bg.png" alt="">
@@ -67,7 +112,7 @@
         <option value="river">Река</option>
         <option value="lake">Озеро</option>
       </select>
-      <button id="profileBtn">Профиль</button>
+      
     </div>
     <div class="location" style="position: relative;">
       <img id="locationImage" src="./images/river.jpg" alt="Локация" class="location-img">
@@ -78,6 +123,8 @@
     <div class="controls">
       <button id="castButton">Забросить удочку</button>
       <button id="openShop">Магазин</button>
+      <button id="profileBtn">Профиль</button>
+      <button id="chatButton">Чат</button>
       <h2 class="coins-display">Монеты: <span id="coins">0</span></h2>
     </div>
 
@@ -86,6 +133,31 @@
     <h2>Пойманные рыбы</h2>
     <ul id="catchList"></ul>
   </div>
+  <script>
+    async function loadUserBalance() {
+    const userId = localStorage.getItem('userId');
+    if (!userId) return;
+
+    try {
+        const res = await fetch(`/api/user/${userId}/balance`);
+        const data = await res.json();
+
+        if (res.ok) {
+            document.getElementById('balanceDisplay').textContent = `Баланс: ${data.balance} 🎣`;
+        } else {
+            console.error(data.error || 'Ошибка загрузки баланса');
+        }
+    } catch (err) {
+        console.error('Ошибка подключения к серверу:', err);
+    }
+}
+
+window.onload = () => {
+    loadUserBalance();
+};
+  </script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="chat.js"></script>
   <script src="script.js" defer></script>
 </body>
 </html>

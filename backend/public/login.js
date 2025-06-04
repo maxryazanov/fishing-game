@@ -17,6 +17,28 @@ registerForm.classList.add('active');
 loginForm.classList.remove('active');
 };
 
+fetch('/api/login', { /* ... */ })
+  .then(res => res.json())
+  .then(data => {
+    if (data.success) {
+      localStorage.setItem('userId', data.userId); // 💾 сохраняем ID
+      window.location.href = 'game.html';          // переход в игру
+    } else {
+      alert(data.message);
+    }
+  });
+
+  fetch('/api/register', { /* ... */ })
+  .then(res => res.json())
+  .then(data => {
+    if (data.success) {
+      localStorage.setItem('userId', data.userId); // 💾 сохраняем ID
+      window.location.href = 'game.html';          // переход в игру
+    } else {
+      alert(data.message);
+    }
+  });
+
 registerForm.addEventListener('submit', function(e) {
 const password = document.getElementById('registerPassword').value;
 const confirmPassword = document.getElementById('registerConfirmPassword').value;

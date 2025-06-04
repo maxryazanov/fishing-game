@@ -41,5 +41,19 @@
     <footer>
         <p class="copy">&copy; 2025 На Крючке</p>
     </footer>
+    <script>
+        fetch('/api/login', { /* ... */ })
+  .then(res => res.json())
+  .then(data => {
+    if (data.success) {
+      localStorage.setItem('userId', data.userId); // 💾 сохраняем ID
+      window.location.href = 'game.html';          // переход в игру
+    } else {
+      alert(data.message);
+    }
+  });
+
+  
+    </script>
 </body>
 </html>
